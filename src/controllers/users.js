@@ -156,3 +156,13 @@ export const getSingleUser = async (req, res, next) => {
         next(error);
     }
 };
+
+// Delete user
+export const deleteUser = async (req, res, next) => {
+    try {
+        await UserModel.findByIdAndDelete(req.params.id);
+        return res.status(200).json("User deleted successfully");
+    } catch (error) {
+        next(error);
+    }
+};
