@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, registerUser, resetPassword, updatePassword } from "../controllers/users.js";
+import { getAllUsers, getSingleUser, loginUser, registerUser, resetPassword, updatePassword } from "../controllers/users.js";
 import { isAuthenticated } from "../middlewares/authentication.js";
 
 
@@ -9,5 +9,7 @@ userRouter.post("/users/register", registerUser);
 userRouter.post("/users/login", loginUser);
 userRouter.post("/users/update-password", isAuthenticated, updatePassword);
 userRouter.post("/users/reset-password", isAuthenticated, resetPassword);
+userRouter.get("/admin/users", isAuthenticated, getAllUsers);
+userRouter.get("/admin/users/:id", isAuthenticated, getSingleUser);
 
 export default userRouter;

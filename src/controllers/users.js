@@ -39,22 +39,18 @@ export const loginUser = async (req, res, next) => {
         if (error) {
             return res.status(422).json(error);
         }
-
         // Find user
         const user = await UserModel.findOne({ email: value.email });
 
         if (!user) {
             return res.status(404).json("User not found");
         }
-
         // Check password
         const isPasswordValid = bcrypt.compareSync(value.password, user.password);
 
         if (!isPasswordValid) {
             return res.status(401).json("Invalid Credentials");
         }
-
-        
         // Generate token
         const token = jwt.sign(
             {
@@ -136,6 +132,27 @@ export const resetPassword = async (req, res, next) => {
         return res.status(200).json("Password reset successfully");
     }
     catch (error) {
+        next(error);
+    }
+};
+
+
+//Get all users
+export const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await UserModel.find().select("-password");
+        return res.status(200).json(users);
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Get single user
+export const getSingleUser = async (req, res, next) => {
+    try {
+        const user = await UserModel.findById(req.params.id).select("-password");
+        return res.status(200).json(user);
+    } catch (error) {
         next(error);
     }
 };

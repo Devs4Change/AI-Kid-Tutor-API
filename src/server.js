@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/users.js";
+import courseRouter from "./routes/courses.js";
 
 
 // Initialize app
@@ -16,7 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use(userRouter)
-
+app.use(courseRouter)
 
 // Start server
 const PORT = process.env.PORT || 3000;
