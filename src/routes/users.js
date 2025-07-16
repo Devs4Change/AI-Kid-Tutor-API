@@ -12,6 +12,6 @@ userRouter.post("/users/reset-password", isAuthenticated, resetPassword);
 userRouter.get("/admin/users", isAuthenticated, isAdmin, getAllUsers);
 userRouter.get("/admin/users/:id", isAuthenticated, isAdmin, getSingleUser);
 userRouter.delete("/admin/users/:id", isAuthenticated, isAdmin, deleteUser);
-userRouter.post("/admin/users/create", isAdmin, isAuthenticated, registerUser);
+userRouter.post("/admin/users/create", isAuthenticated, isAdmin, registerUser);
 
 export default userRouter;
