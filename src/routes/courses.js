@@ -6,8 +6,8 @@ const courseRouter = Router();
 
 courseRouter.get("/courses", getAllCourses);
 courseRouter.get("/courses/:id", getSingleCourse);
-courseRouter.post("/admin/courses/create", isAuthenticated, isAdmin, addCourse);
-courseRouter.put("/admin/courses/:id", isAuthenticated, isAdmin, updateCourse);
-courseRouter.delete("/admin/courses/:id", isAuthenticated, isAdmin, deleteCourse);
+courseRouter.post("/courses/create", isAuthenticated, isAdmin, addCourse);
+courseRouter.put("/courses/:id", isAuthenticated, isAdmin, updateCourse);
+courseRouter.delete("/courses/:id", isAuthenticated, isAdmin, deleteCourse);
 
 export default courseRouter;
