@@ -140,7 +140,7 @@ export const resetPassword = async (req, res, next) => {
 //Get all users
 export const getAllUsers = async (req, res, next) => {
     try {
-        const users = await UserModel.find().select("-password");
+        const users = await UserModel.find({}).select("-password");
         return res.status(200).json(users);
     } catch (error) {
         next(error);

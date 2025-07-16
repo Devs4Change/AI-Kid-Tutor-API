@@ -8,15 +8,20 @@ export const createCourseValidator = Joi.object({
     duration: Joi.string().required(),
     lessons: Joi.number().required(),
     description: Joi.string().required(),
+    skills: Joi.array(),
+    thumbnail: Joi.string(),
+    status: Joi.string(),
+    rating: Joi.number(),
+    enrolled: Joi.number()
 });
 
 // Update Course Validator
 export const updateCourseValidator = Joi.object({
     title: Joi.string(),
+    description: Joi.string(),
     category: Joi.string(),
     level: Joi.string(),
     duration: Joi.string(),
     lessons: Joi.number(),
-    description: Joi.string(),
 });
 

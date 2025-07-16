@@ -10,7 +10,7 @@ export const addCourse = async (req, res, next) => {
         if (error) {
             return res.status(422).json(error);
         }
-        const course = await CourseModel.create(req.body);
+        const course = await CourseModel.create(value);
         return res.status(201).json(course);
     } catch (error) {
         next(error);
@@ -44,6 +44,19 @@ export const updateCourse = async (req, res, next) => {
         const { error, value } = updateCourseValidator.validate(req.body);
         const course = await CourseModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         return res.status(200).json(course);
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Delete Course Controller
+export const deleteCourse = async (req, res, next) => {
+    try {
+        const course = await CourseModel.findByIdAndDelete(req.params.id);
+        if (!course) {
+            return res.status(404).json({ error: "Course not found" });
+        }
+        return res.status(200).json("Course deleted successfully");
     } catch (error) {
         next(error);
     }
