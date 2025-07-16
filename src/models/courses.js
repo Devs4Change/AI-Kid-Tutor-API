@@ -7,7 +7,7 @@ const courseSchema = new Schema({
     category: { type: String, required: true },
     level: { type: String, required: true },
     duration: { type: String, required: true },
-    lessons: { type: Number, required: true },
+    lessons: { type: Array, required: true },
     thumbnail: { type: String },
     skills: { type: Array },
     status: { type: String },
