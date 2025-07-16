@@ -2,7 +2,6 @@ import { Router } from "express";
 import { deleteUser, getAllUsers, getSingleUser, loginUser, registerUser, resetPassword, updatePassword } from "../controllers/users.js";
 import { isAdmin, isAuthenticated } from "../middlewares/authentication.js";
 
-
 const userRouter = Router();
 
 userRouter.post("/users/register", registerUser);
