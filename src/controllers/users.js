@@ -166,3 +166,23 @@ export const deleteUser = async (req, res, next) => {
         next(error);
     }
 };
+
+// LOGOUT USER
+export const logoutUser = async (req, res) => {
+    try {
+        // Remove token from cookies or headers
+        res.clearCookie("token");
+        res.header("Authorization", "");
+        res.status(200).send({
+            success: true,
+            message: "User logged out successfully",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error in logging out user",
+            error,
+        });
+    }
+};
